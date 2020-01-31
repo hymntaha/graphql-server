@@ -2,18 +2,7 @@ const { ApolloServer, gql } = require("apollo-server");
 const mongoose = require('mongoose')
 require('dotenv').config()
 const Post = require('./models/Post');
-
-const typeDefs = gql`
-  type Post{
-      id:ID!
-      body: String!
-      createdAt:String!
-      username: String!
-  }
-  type Query {
-    getPosts: [Post]
-  }
-`;
+const typeDefs = require('./graphql/typeDefs');
 
 const resolvers = {
   Query: {
