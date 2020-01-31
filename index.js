@@ -1,4 +1,6 @@
 const { ApolloServer, gql } = require("apollo-server");
+const mongoose = require('mongoose')
+require('dotenv').config()
 
 const typeDefs = gql`
   type Query {
@@ -16,6 +18,10 @@ const server = new ApolloServer({
   typeDefs,
   resolvers
 });
+
+mongoose.connect(process.env.DATABASE, {
+  useNewUrlParser: true,
+}).then(() => console.log('DB connected'));
 
 server.listen({ port: 5000 }).then(res => {
   console.log(`Server is running at ${res.url}`);
