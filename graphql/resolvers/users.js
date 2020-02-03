@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const {UserInputError} = require('apollo-server');
-const {validateRegisterInput} = require('../../util/validators');
+const {validateRegisterInput,validateLoginInput} = require('../../util/validators');
 
 const User = require("../../models/User");
 
