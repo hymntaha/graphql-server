@@ -25,6 +25,8 @@ module.exports = {
 
   },
   Mutation:{
-    async createPost(_,{})
+    async createPost(_, {body}, context) {
+
+    }
   }
 }
