@@ -1,16 +1,12 @@
-import React, { Component } from 'react'
-import { Menu, Segment } from 'semantic-ui-react'
+import React, { useState } from 'react'
+import { Menu } from 'semantic-ui-react'
 
-export default class MenuExampleSecondaryPointing extends Component {
-  state = { activeItem: 'home' }
+function Header{
+  const [activeItem, setActiveItem] = useState('');
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    const { activeItem } = this.state
+  const handleItemClick = (e, {name}) => setActiveItem(name);
 
     return (
-      <div>
         <Menu pointing secondary>
           <Menu.Item
             name='home'
@@ -35,11 +31,7 @@ export default class MenuExampleSecondaryPointing extends Component {
             />
           </Menu.Menu>
         </Menu>
-
-        <Segment>
-          <img src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
-        </Segment>
-      </div>
     )
-  }
 }
+
+export default Header;
