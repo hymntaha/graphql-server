@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import {Grid} from 'semantic-ui-react';
+import PostCard from '../components/PostCard';
 
 const Home = () => {
   const {loading, data: {getPosts:post}} = useQuery(FETCH_POSTS_QUERY);
