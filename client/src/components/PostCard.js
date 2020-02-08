@@ -5,6 +5,12 @@ import {Card, Icon, Label, Image, CardContent, Button} from "semantic-ui-react";
 import moment from "moment";
 
 const PostCard = ({post: {body, createdAt, id, username, likeCount, commentCount, likes}}) => {
+  function likePost(){
+    console.log()
+  }
+  function commentOnPost() {
+    
+  }
   return (
     <Card>
       <Card.Content>
@@ -16,13 +22,22 @@ const PostCard = ({post: {body, createdAt, id, username, likeCount, commentCount
         </Card.Description>
       </Card.Content>
       <Card.Content>
-        <Button as='div' labelPosition='right'>
-          <Button color='red'>
+        <Button as='div' labelPosition='right' basic onClick={likePost}>
+          <Button color='teal'>
             <Icon name='heart' />
             Like
           </Button>
-          <Label as='a' basic color='red' pointing='left'>
-            2,048
+          <Label basic color='teal' pointing='left'>
+            {likeCount}
+          </Label>
+        </Button>
+        <Button as='div' labelPosition='right' basic onClick={commentOnPost}>
+          <Button color='blue'>
+            <Icon name='comments' />
+            Like
+          </Button>
+          <Label basic color='blue' pointing='left'>
+            {commentCount}
           </Label>
         </Button>
       </Card.Content>
