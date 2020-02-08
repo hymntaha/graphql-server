@@ -1,8 +1,13 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql";
+import gql from "graphql-tag";
 
 const Home = () => {
+  const {loading, data} = useQuery(FETCH_POSTS_QUERY);
+
+  if (data) {
+    console.log(data)
+  }
   return (
     <div>
       <h1>Home Page</h1>
