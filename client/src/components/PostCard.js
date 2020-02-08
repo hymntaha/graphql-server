@@ -16,7 +16,15 @@ const PostCard = ({post: {body, createdAt, id, username, likeCount, commentCount
         </Card.Description>
       </Card.Content>
       <Card.Content>
-       <p>Buttons here</p>
+        <Button as='div' labelPosition='right'>
+          <Button color='red'>
+            <Icon name='heart' />
+            Like
+          </Button>
+          <Label as='a' basic color='red' pointing='left'>
+            2,048
+          </Label>
+        </Button>
       </Card.Content>
     </Card>
   );
