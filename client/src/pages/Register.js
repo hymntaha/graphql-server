@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Form,Button} from "semantic-ui-react";
+import {useMutation} from "@apollo/react-hooks";
+import gql from 'graphql-tag';
 
 
 function Register()  {
@@ -7,13 +9,24 @@ function Register()  {
     username: '',
     email:'',
     password: '',
-    confirmPassword: '',
+    confirmPassword: ''
   ])
 
   const onChange = (event)=>{
     setValues({...values, [event.target.name]: event.target.value})
   }
-  const onSubmit
+  const onSubmit = (event) =>{
+    event.preventDefault();
+  }
+
+  const [addUser, {loading}] = useMutation(REGISTER_USER,{
+    update(proxy, result){
+      console.log(result)
+    },
+    variables:{
+      username: values
+    }
+  })
   return (
     <div>
       <Form onSubmit={onSubmit} noValidate>
