@@ -15,9 +15,7 @@ function Register()  {
   const onChange = (event)=>{
     setValues({...values, [event.target.name]: event.target.value})
   }
-  const onSubmit = (event) =>{
-    event.preventDefault();
-  }
+
 
   const [addUser, {loading}] = useMutation(REGISTER_USER,{
     update(proxy, result){
@@ -27,8 +25,12 @@ function Register()  {
       username: values
     }
   })
+  const onSubmit = (event) =>{
+    event.preventDefault();
+    addUser();
+  }
   return (
-    <div>
+    <div className='form-container'>
       <Form onSubmit={onSubmit} noValidate>
         <h1>Register</h1>
         <Form.Input label="Username" placeholder="Username.." name="username" value={values.username} onChange={onChange}/>
