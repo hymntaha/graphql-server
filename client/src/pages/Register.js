@@ -71,6 +71,15 @@ function Register() {
           Submit
         </Button>
       </Form>
+      <div className="ui error message">
+        <ul className="list">
+          {Object.keys(errors).length>0 && (
+            Object.values(errors).map(value=>(
+              <li key={value}>{value}</li>
+            ))
+          )}
+        </ul>
+      </div>
     </div>
   );
 }
