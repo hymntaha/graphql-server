@@ -3,7 +3,7 @@ import { Form, Button } from "semantic-ui-react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-function Register() {
+function Register(props) {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
     username: "",
@@ -17,8 +17,9 @@ function Register() {
   };
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
-    update(proxy, result) {
+    update(_, result) {
       console.log(result);
+      props.history.push('/');
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
@@ -75,12 +76,14 @@ function Register() {
           Submit
         </Button>
       </Form>
-      <div className="ui error message">
-        <ul className="list">
-          {Object.keys(errors).length > 0 &&
-            Object.values(errors).map(value => <li key={value}>{value}</li>)}
-        </ul>
-      </div>
+      {Object.keys(errors).length > 0 && (
+        <div className="ui error message">
+          <ul className="list">
+            {Object.values(errors).map(value => <li key={value}>{value}</li>)}
+          </ul>
+        </div>
+        )}
+
     </div>
   );
 }
