@@ -20,7 +20,7 @@ function Register() {
     update(proxy, result) {
       console.log(result);
     },
-    onError(err){
+    onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
     variables: {
@@ -33,7 +33,7 @@ function Register() {
   };
   return (
     <div className="form-container">
-      <Form onSubmit={onSubmit} noValidate className={loading ? 'loading': ''}>
+      <Form onSubmit={onSubmit} noValidate className={loading ? "loading" : ""}>
         <h1>Register</h1>
         <Form.Input
           label="Username"
@@ -41,6 +41,7 @@ function Register() {
           name="username"
           type="text"
           value={values.username}
+          error={errors.username ? true : false}
           onChange={onChange}
         />
         <Form.Input
@@ -49,6 +50,7 @@ function Register() {
           name="email"
           type="email"
           value={values.email}
+          error={errors.email ? true : false}
           onChange={onChange}
         />
         <Form.Input
@@ -57,6 +59,7 @@ function Register() {
           name="password"
           type="password"
           value={values.password}
+          error={errors.password ? true : false}
           onChange={onChange}
         />
         <Form.Input
@@ -65,6 +68,7 @@ function Register() {
           type="password"
           name="confirmPassword"
           value={values.confirmPassword}
+          error={errors.password ? true : false}
           onChange={onChange}
         />
         <Button type="Submit" primary>
@@ -73,11 +77,8 @@ function Register() {
       </Form>
       <div className="ui error message">
         <ul className="list">
-          {Object.keys(errors).length>0 && (
-            Object.values(errors).map(value=>(
-              <li key={value}>{value}</li>
-            ))
-          )}
+          {Object.keys(errors).length > 0 &&
+            Object.values(errors).map(value => <li key={value}>{value}</li>)}
         </ul>
       </div>
     </div>
