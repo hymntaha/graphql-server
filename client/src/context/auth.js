@@ -1,47 +1,56 @@
-import React, {useReducer, createContext} from "react";
+import React, { useReducer, createContext } from "react";
+if(localStorage.getItem('jwtToken')){
+
+}
 
 const AuthContext = createContext({
   user: null,
-  login: (userData)=>{},
-  logout: ()=>{}
-})
+  login: userData => {},
+  logout: () => {}
+});
 
-function authReducer(state,action){
+function authReducer(state, action) {
   switch (action.type) {
-    case 'LOGIN':
+    case "LOGIN":
       return {
         ...state,
         user: action.payload
-      }
-    case 'LOGOUT':
+      };
+    case "LOGOUT":
       return {
         ...state,
-        user:null
-      }
+        user: null
+      };
     default:
       return state;
   }
 }
 
 function AuthProvider(props) {
-  const [state,dispatch] = useReducer(authReducer, {user: null});
+  const [state, dispatch] = useReducer(authReducer, { user: null });
 
-  function login(data) {
+  function login(userData) {
+    localStorage.setItem("jwtToken", userData.token);
     dispatch({
-      type: 'LOGIN',
+      type: "LOGIN",
       payload: userData
-    })
+    });
   }
 
   function logout() {
+    localStorage.removeItem("jwtToken");
+
     dispatch({
-      type: 'LOGOUT',
-    })
+      type: "LOGOUT"
+    });
   }
 
   return (
-    <AuthContext.Provider value={{user: state.user,login, logout}} {...props}/>
-  )
+    <AuthContext.Provider
+      value={{ user: state.user, login, logout }}
+      {...props}
+    />
+  );
 }
 
-export {AuthContext,AuthProvider};
+export { AuthContext, AuthProvider };
