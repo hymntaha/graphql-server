@@ -16,6 +16,9 @@ function PostForm() {
       values.body = '';
     }
   })
+  function createPostCallback(){
+    createPost();
+  }
 
   return (
     <Form onSubmit={onSubmit}>
