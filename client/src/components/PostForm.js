@@ -1,8 +1,22 @@
 import React from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useForm } from "../util/hooks";
+import gql from "graphql-tag";
+import {useMutation} from "@apollo/react-hooks";
 
 function PostForm() {
+  const {values, onChange, onSubmit} = useForm(createPostCallBack,{
+    body:''
+  })
+
+  const [createPost, {error}] = useMutation(CREATE_POST_MUTATION,{
+    variables: values,
+    update(_, result){
+      console.log(result);
+      values.body = '';
+    }
+  })
+
   return (
     <Form onSubmit={onSubmit}>
       <h2>Create a post:</h2>
@@ -20,5 +34,22 @@ function PostForm() {
     </Form>
   );
 }
+
+const CREATE_POST_MUTATION = gql`
+    mutation createPost($body: String!){
+        createPost(body:$body){
+            id body createdAt username
+            likes{
+                id username createdAt
+            }
+            likeCount
+            comments{
+                id body username createdAt
+            }
+            commentCount
+            
+        }
+    }
+`
 
 export default PostForm;
