@@ -14,8 +14,10 @@ function PostForm() {
     variables: values,
     update(proxy, result){
       proxy.readQuery({
-
+        query: FETCH_POSTS_QUERY
       })
+      data.getPosts = [result.data.getPost, ...data.getPosts];
+      proxy.writeQuery(({query: FETCH_POSTS_QUERY,data}))
       values.body = '';
     }
   })
