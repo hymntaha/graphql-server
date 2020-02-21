@@ -17,9 +17,6 @@ const PostCard = ({
   post: { body, createdAt, id, username, likeCount, commentCount, likes }
 }) => {
   const { user } = useContext(AuthContext);
-  function likePost() {
-    console.log();
-  }
 
   return (
     <Card>
