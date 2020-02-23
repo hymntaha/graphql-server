@@ -1,7 +1,7 @@
 import React from "react";
 import gql from "graphql-tag";
 import {useQuery} from "@apollo/react-hooks";
-import {Grid} from "semantic-ui-react";
+import {Grid, GridColumn} from "semantic-ui-react";
 
 function SinglePost(props) {
   const postId = props.match.params.postId;
@@ -21,7 +21,10 @@ function SinglePost(props) {
     postMarkup = (
       <Grid>
         <Grid.Row>
+          <Grid.Column widht={2}>
+            <Image src="https://react.semantic-ui.com/images/avatar/large/molly.png" size="small" float="right"/>
 
+          </Grid.Column>
         </Grid.Row>
       </Grid>
     )
