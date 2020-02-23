@@ -1,7 +1,31 @@
 import React from "react";
 import gql from "graphql-tag";
+import {useQuery} from "@apollo/react-hooks";
+import {Grid} from "semantic-ui-react";
+
 function SinglePost(props) {
   const postId = props.match.params.postId;
+
+  const {data: {getPost}} = useQuery(FETCH_POST_QUERY,{
+    variables:{
+      postId
+    }
+  })
+  let postMarkup;
+
+  if (!getPost) {
+    postMarkup = <p>Loading post..</p>
+  } else {
+    const {id, body, createdAt, username, comments, likes, likeCount, commentCount} = getPost;
+
+    postMarkup = (
+      <Grid>
+        <Grid.Row>
+
+        </Grid.Row>
+      </Grid>
+    )
+  }
 }
 
 const FETCH_POST_QUERY = gql`
