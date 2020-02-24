@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import DeleteButton from './DeleteButton';
 
 import {
   Card,
@@ -39,17 +40,7 @@ const PostCard = ({
             {commentCount}
           </Label>
         </Button>
-        {user && user.username === username && (
-          <Button
-            as="div"
-            color="red"
-            onClick={() => console.log("Delete post")}
-            style={{ margin: 0 }}
-            floated="right"
-          >
-            <Icon name="trash" />
-          </Button>
-        )}
+        {user && user.username === username && <DeleteButton postId={id} />}
       </Card.Content>
     </Card>
   );
