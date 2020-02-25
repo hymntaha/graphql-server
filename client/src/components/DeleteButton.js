@@ -18,7 +18,7 @@ function DeleteButton({postId}) {
 
   return (
     <>
-    <Button as="div" color="red" floated="right" onClick={() => console.log('Delete post')}>
+    <Button as="div" color="red" floated="right" onClick={() => setConfirmOpen(true)}>
       <Icon name="trash" style={{margin:0}}/>
     </Button>
     <Confirm open={confirmOpen} oncancel{()=> setConfirmOpen(false)} onConfirm={deletePost} />
