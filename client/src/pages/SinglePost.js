@@ -80,6 +80,7 @@ function SinglePost(props) {
                     {comment.username}
                   </Card.Header>
                   <Card.Meta>{moment(comment.createdAt).fromNow()}</Card.Meta>
+                  <Card.Description>{comment.body}</Card.Description>
                 </Card.Content>
               </Card>
             ))}
