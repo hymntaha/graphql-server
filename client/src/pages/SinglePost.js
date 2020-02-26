@@ -73,6 +73,16 @@ function SinglePost(props) {
                 )}
               </Card.Content>
             </Card>
+            {comments.map(comment=>(
+              <Card fluid key={comment.id}>
+                <Card.Content>
+                  <Card.Header>
+                    {comment.username}
+                  </Card.Header>
+                  <Card.Meta>{moment(comment.createdAt).fromNow()}</Card.Meta>
+                </Card.Content>
+              </Card>
+            ))}
           </Grid.Column>
         </Grid.Row>
       </Grid>
