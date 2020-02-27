@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import gql from "graphql-tag";
 import { useQuery, useMutation, useState } from "@apollo/react-hooks";
 import {
@@ -18,6 +18,7 @@ import DeleteButton from "../components/DeleteButton";
 function SinglePost(props) {
   const postId = props.match.params.postId;
   const { user } = useContext(AuthContext);
+  const commentInputRef = useRef(null);
   const [comment, setComment] = useState("");
   const {
     data: { getPost }
@@ -108,6 +109,7 @@ function SinglePost(props) {
                         name="comment"
                         value={comment}
                         onChange={event => setComment(event.target.value)}
+                        ref={commentInputRef}
                       />
                     </div>
                     <button
