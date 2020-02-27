@@ -33,6 +33,7 @@ function SinglePost(props) {
     {
       update() {
         setComment("");
+        commentInputRef.current.blur();
       },
       variables: {
         postId,
