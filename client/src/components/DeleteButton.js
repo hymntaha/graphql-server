@@ -25,7 +25,8 @@ function DeleteButton({postId, commentId, callback}) {
       }
     },
     variables:{
-      postId
+      postId,
+      commentId
     }
   })
 
@@ -35,7 +36,7 @@ function DeleteButton({postId, commentId, callback}) {
     <Button as="div" color="red" floated="right" onClick={() => setConfirmOpen(true)}>
       <Icon name="trash" style={{margin:0}}/>
     </Button>
-    <Confirm open={confirmOpen} oncancel{()=> setConfirmOpen(false)} onConfirm={deletePost} />
+    <Confirm open={confirmOpen} oncancel{()=> setConfirmOpen(false)} onConfirm={deletePostorMutation} />
     </>
   );
 
