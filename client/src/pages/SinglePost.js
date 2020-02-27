@@ -143,7 +143,7 @@ function SinglePost(props) {
 }
 
 const SUBMIT_COMMENT_MUTATION = gql`
-  mutation($postId: ID!, $body: String!) {
+  mutation($postId: String!, $body: String!) {
     createComment(postId: $postId, body: $body) {
       id
       comments {
