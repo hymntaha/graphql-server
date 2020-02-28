@@ -33,7 +33,7 @@ function DeleteButton({postId, commentId, callback}) {
 
   return (
     <>
-    <Popup content="Delete post" inverted trigger={
+    <Popup content={commentId ? 'Delete comment' : 'Delete post' } inverted trigger={
       <Button as="div" color="red" floated="right" onClick={() => setConfirmOpen(true)}>
         <Icon name="trash" style={{margin:0}}/>
       </Button>
